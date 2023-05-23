@@ -16,7 +16,7 @@ describe('TweetService', () => {
     expect(service).toBeDefined()
   })
 
-  describe('createTweet', () => {
+  describe('create', () => {
     it('should create tweet', () => {
       service.tweets = []
       const payload = 'This is my tweet'

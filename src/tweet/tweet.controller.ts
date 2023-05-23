@@ -17,13 +17,13 @@ export class TweetController {
   }
 
   @Post()
-  create(@Body() body: any): string {
-    return this.tweetService.create(body)
+  create(@Body() body: { tweet: string }): string {
+    return this.tweetService.create(body.tweet)
   }
 
   @Patch(':id')
-  update(@Param('id') id: number, @Body() body): string {
-    return this.tweetService.update(body, Number(id))
+  update(@Param('id') id: number, @Body() body: { tweet: string }): string {
+    return this.tweetService.update(body.tweet, Number(id))
   }
 
   @Delete(':id')
