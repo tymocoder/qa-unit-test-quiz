@@ -55,21 +55,22 @@ describe('TweetService', () => {
     });
   });
 
-  describe('My interview test suite', () => {
+  describe('get', () => {
     it('should return tweet', () => {
-      service.tweets = [];
       const payload = 'test value';
-      const tweet = service.create(payload);
+      service.tweets = [payload];
 
       expect(service.get(0)).toBe(payload);
     });
 
     it('should return NotFoundException if element not exist', () => {
+      const errorMessage = 'That tweet does not exist';
       const tweet = () => {
         return service.get(0);
       };
 
-      expect(tweet).toThrowError();
+      expect(tweet).toThrowError(NotFoundException);
+      expect(tweet).toThrowError(errorMessage);
     });
   });
 });
