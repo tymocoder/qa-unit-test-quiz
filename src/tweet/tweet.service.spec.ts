@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { BadRequestException, NotFoundException } from '@nestjs/common';
 import { TweetService } from './tweet.service';
 
-describe('TweetService', () => {
+describe('TweetService test suite', () => {
   let service: TweetService;
 
   beforeEach(async () => {
