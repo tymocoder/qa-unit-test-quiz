@@ -37,4 +37,14 @@ describe('TweetController test suite', () => {
       expect(tweetController.create({tweet})).toBe(tweet);
     });
   });
+
+  describe('update', () => {
+    it('should update tweet with certain id', () => {
+        const id = 1;
+        const tweet = 'updated tweet';
+      jest.spyOn(tweetService, 'update').mockImplementation(() => tweet);
+
+      expect(tweetController.update(id, {tweet})).toBe(tweet);
+    });
+  });
 });
