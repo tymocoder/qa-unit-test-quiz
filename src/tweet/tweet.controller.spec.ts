@@ -1,27 +1,31 @@
-import { TweetController } from './tweet.controller'
-import { TweetService } from './tweet.service'
+import { TweetController } from './tweet.controller';
+import { TweetService } from './tweet.service';
 
-describe("TweetController test suite", () => {
-    let tweetController: TweetController;
-    let tweetService: TweetService;
+describe('TweetController test suite', () => {
+  let tweetController: TweetController;
+  let tweetService: TweetService;
 
-    beforeEach(() => {
-        tweetService = new TweetService;
-        tweetController = new TweetController(tweetService);
-    })
+  beforeEach(() => {
+    tweetService = new TweetService();
+    tweetController = new TweetController(tweetService);
+  });
 
-    it("getAll should return all tweets", () => {
-        const payload = ['one', 'two'];
-        jest.spyOn(tweetService, 'getAll').mockImplementation(() => payload)
+  describe('getAll', () => {
+    it('should return all tweets', () => {
+      const payload = ['one', 'two'];
+      jest.spyOn(tweetService, 'getAll').mockImplementation(() => payload);
 
-      expect(tweetController.getAll()).toBe(payload)
-    })
+      expect(tweetController.getAll()).toBe(payload);
+    });
+  });
 
-    it("get should return tweet with certain id", () => {
-        const id = 1;
-        const tweet = 'first tweet';
-        jest.spyOn(tweetService, 'get').mockImplementation(() => tweet)
+  describe('get', () => {
+    it('should return tweet with certain id', () => {
+      const id = 1;
+      const tweet = 'first tweet';
+      jest.spyOn(tweetService, 'get').mockImplementation(() => tweet);
 
-      expect(tweetController.get(id)).toBe(tweet)
-    })
-})
+      expect(tweetController.get(id)).toBe(tweet);
+    });
+  });
+});
