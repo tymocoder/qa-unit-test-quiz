@@ -55,15 +55,15 @@ describe('TweetService', () => {
     });
   });
 
-  describe("getAll", () => {
-    it("should return all tweets", () => {
-      const payload = ["one", "two"]
+  describe('getAll', () => {
+    it('should return all tweets', () => {
+      const payload = ['one', 'two'];
       service.tweets = payload;
 
       const tweets = service.getAll();
       expect(tweets).toBe(payload);
-    })
-  })
+    });
+  });
 
   describe('get', () => {
     it('should return tweet', () => {
