@@ -28,4 +28,13 @@ describe('TweetController test suite', () => {
       expect(tweetController.get(id)).toBe(tweet);
     });
   });
+
+  describe('create', () => {
+    it('should create new tweet', () => {
+      const tweet = 'new tweet';
+      jest.spyOn(tweetService, 'create').mockImplementation(() => tweet);
+
+      expect(tweetController.create({tweet})).toBe(tweet);
+    });
+  });
 });
