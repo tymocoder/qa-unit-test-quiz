@@ -92,6 +92,7 @@ describe('TweetService test suite', () => {
       const tweet = "updated tweet"
 
       expect(service.update(tweet, id)).toBe(tweet)
+      expect(service.tweets[id]).toBe(tweet)
     });
   });
 
