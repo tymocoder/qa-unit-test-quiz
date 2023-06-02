@@ -56,4 +56,7 @@ describe('TweetController test suite', () => {
       expect(tweetService.update).toHaveBeenCalledWith(tweet, id);
     });
   });
+
+  describe('delete', () => {
+  });
 });

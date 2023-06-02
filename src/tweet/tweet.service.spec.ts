@@ -83,4 +83,25 @@ describe('TweetService test suite', () => {
       expect(tweet).toThrowError(errorMessage);
     });
   });
+
+  describe('update', () => {
+    it('should return updated tweet', () => {
+      const payload = ['one', 'two'];
+      service.tweets = payload;
+      const id = 0;
+      const tweet = "updated tweet"
+
+      expect(service.update(tweet, id)).toBe(tweet)
+    });
+  });
+
+  describe('delete', () => {
+    it('should return deleted tweet', () => {
+      const payload = ['one', 'two'];
+      service.tweets = payload;
+      const id = 0;
+
+      expect(payload[id]).toEqual(service.delete(id));
+    });
+  });
 });
