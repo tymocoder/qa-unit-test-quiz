@@ -56,4 +56,15 @@ describe('TweetController test suite', () => {
       expect(tweetService.update).toHaveBeenCalledWith(tweet, id);
     });
   });
+  
+  describe('delete', () => {
+    it('should delete tweet by certain id', () => {
+      const id = 1;
+      const tweet = 'Deleted tweet';
+      jest.spyOn(tweetService, 'delete').mockReturnValue(tweet);
+
+      expect(tweetController.delete(id)).toEqual(tweet);
+      expect(tweetService.delete).toHaveBeenCalledWith(id);
+    });
+  });
 });
