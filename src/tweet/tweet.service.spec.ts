@@ -21,7 +21,6 @@ describe('TweetService test suite', () => {
     it('should create tweet', () => {
       service.tweets = [];
       const payload = 'This is my tweet';
-
       const tweet = service.create(payload);
 
       expect(tweet).toBe(payload);
@@ -32,7 +31,6 @@ describe('TweetService test suite', () => {
     it('should prevent empty tweets', () => {
       const payload = '';
       const errorMessage = 'Tweet cannot be empty.';
-
       const createTweet = () => {
         return service.create(payload);
       };
@@ -42,45 +40,14 @@ describe('TweetService test suite', () => {
     });
 
     it('should prevent tweets over 100 character', () => {
-      const payload =
-        'This is a long tweet over 100 characters This is a long tweet over 100 characters This is a long t...';
+      const payload = 'This is a long tweet over 100 characters This is a long tweet over 100 characters This is a long t...';
       const errorMessage = 'Tweet too long.';
-
       const createTweet = () => {
         return service.create(payload);
       };
 
       expect(createTweet).toThrowError(BadRequestException);
       expect(createTweet).toThrowError(errorMessage);
-    });
-  });
-
-  describe('getAll', () => {
-    it('should return all tweets', () => {
-      const payload = ['one', 'two'];
-      service.tweets = payload;
-
-      const tweets = service.getAll();
-      expect(tweets).toBe(payload);
-    });
-  });
-
-  describe('get', () => {
-    it('should return tweet', () => {
-      const payload = 'test value';
-      service.tweets = [payload];
-
-      expect(service.get(0)).toBe(payload);
-    });
-
-    it('should return NotFoundException if element not exist', () => {
-      const errorMessage = 'That tweet does not exist';
-      const tweet = () => {
-        return service.get(0);
-      };
-
-      expect(tweet).toThrowError(NotFoundException);
-      expect(tweet).toThrowError(errorMessage);
     });
   });
 
@@ -126,6 +93,35 @@ describe('TweetService test suite', () => {
 
       expect(() => service.update(tweet, id)).toThrowError(BadRequestException);
       expect(() => service.update(tweet, id)).toThrowError(errorMessage);
+    });
+  });
+
+  describe('getAll', () => {
+    it('should return all tweets', () => {
+      const payload = ['one', 'two'];
+      service.tweets = payload;
+      const tweets = service.getAll();
+      
+      expect(tweets).toBe(payload);
+    });
+  });
+
+  describe('get', () => {
+    it('should return tweet', () => {
+      const payload = 'test value';
+      service.tweets = [payload];
+
+      expect(service.get(0)).toBe(payload);
+    });
+
+    it('should return NotFoundException if element not exist', () => {
+      const errorMessage = 'That tweet does not exist';
+      const tweet = () => {
+        return service.get(0);
+      };
+
+      expect(tweet).toThrowError(NotFoundException);
+      expect(tweet).toThrowError(errorMessage);
     });
   });
 
