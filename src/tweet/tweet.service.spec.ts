@@ -137,5 +137,15 @@ describe('TweetService test suite', () => {
 
       expect(payload[id]).toEqual(service.delete(id));
     });
+
+    it('should return NotFoundException', () => {
+      const payload = ['one', 'two'];
+      service.tweets = payload;
+      const id = 2;
+      const errorMessage = "That tweet does not exist";
+
+      expect(() => service.delete(id)).toThrowError(NotFoundException);
+      expect(() => service.delete(id)).toThrowError(errorMessage);
+    });
   });
 });
