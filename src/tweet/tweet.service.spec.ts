@@ -132,6 +132,7 @@ describe('TweetService test suite', () => {
       const id = 0;
 
       expect(payload[id]).toEqual(service.delete(id));
+      expect(service.tweets[id]).toBe('two');
     });
 
     it('should return NotFoundException', () => {
