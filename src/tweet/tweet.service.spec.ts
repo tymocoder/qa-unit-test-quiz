@@ -105,6 +105,28 @@ describe('TweetService test suite', () => {
       expect(() => service.update(tweet, id)).toThrowError(NotFoundException);
       expect(() => service.update(tweet, id)).toThrowError(errorMessage);
     });
+
+    it('should return BadRequestException', () => {
+      const payload = ['one', 'two'];
+      service.tweets = payload;
+      const id = 0;
+      const tweet = ""
+      const errorMessage = "Tweet cannot be empty.";
+
+      expect(() => service.update(tweet, id)).toThrowError(BadRequestException);
+      expect(() => service.update(tweet, id)).toThrowError(errorMessage);
+    });
+
+    it('should return BadRequestException', () => {
+      const payload = ['one', 'two'];
+      service.tweets = payload;
+      const id = 0;
+      const tweet = "376ackbbvqswpeax2lcl2o7vhd0cltq1gz5c1tke0fkm64p6m81izzjym6w307f38mrm8s07nsywsc5ehwrisn7gcaxv5cwtht5ahl85e";
+      const errorMessage = "Tweet too long.";
+
+      expect(() => service.update(tweet, id)).toThrowError(BadRequestException);
+      expect(() => service.update(tweet, id)).toThrowError(errorMessage);
+    });
   });
 
   describe('delete', () => {
