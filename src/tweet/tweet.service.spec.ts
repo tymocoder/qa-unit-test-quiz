@@ -94,6 +94,17 @@ describe('TweetService test suite', () => {
       expect(service.update(tweet, id)).toBe(tweet)
       expect(service.tweets[id]).toBe(tweet)
     });
+
+    it('should return NotFoundException', () => {
+      const payload = ['one', 'two'];
+      service.tweets = payload;
+      const id = 2;
+      const tweet = "updated tweet"
+      const errorMessage = "That tweet does not exist";
+
+      expect(() => service.update(tweet, id)).toThrowError(NotFoundException);
+      expect(() => service.update(tweet, id)).toThrowError(errorMessage);
+    });
   });
 
   describe('delete', () => {
